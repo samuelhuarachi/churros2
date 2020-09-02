@@ -1,32 +1,11 @@
-const axios = require('axios');
 
-const {List} = require("./component/List")
-
-
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+const {List, handleAddCart} = require("./component/List")
+import App from "./component/App";
 const listProduts = new List()
-listProduts.render()
 
 
+ReactDOM.render(<App />, document.getElementById('churrosApp'));
 
 
-axios.get('https://churros2.samuelgomes.now.sh/api/products.js')
-    .then(function (response) {
-
-        console.log(response.data)
-
-        for(product of response.data) {
-            console.log(product)
-        }
-
-        listProduts.addState({
-            products: response.data
-        })
-        
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });

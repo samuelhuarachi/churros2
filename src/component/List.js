@@ -1,3 +1,7 @@
+const handleAddCart = (id) => {
+    console.log(id)
+};
+
 class List
 {
 
@@ -6,14 +10,37 @@ class List
     }
 
     addState(obj) {
-        this.state.push(obj)
-
-        console.log(this.state)
+        console.log("State")
+        Object.assign(this.state, obj);
+        console.log(this.state.products)
     }
 
+    // const handleAddCart = (id) => {
+    //     console.log(`HAHHAHAHHA ${id}`)
+    // }
+
+    // static get handleAddCart() {
+    //     return handleAddCart;
+    // }
 
     render() {
 
+        console.log(this.state.products)
+        
+        let tableResult = ``
+        for(let product of this.state.products) {
+            tableResult = tableResult + `
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        ${product.name}
+                        <button onClick="console.log()" class="btn btn-primary btn-sm float-right">
+                            Adicionar ao carrinho <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </td>
+                </tr>
+            `
+        }
 
         $("#list_products").html(`
                 <table class="table">
@@ -24,33 +51,7 @@ class List
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>
-                                Churros Espanhol, 4 palitos de 16cm cada, Nutella Original
-                                <button class="btn btn-primary btn-sm float-right">
-                                    Adicionar ao carrinho <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>
-                                Churros Espanhol, 4 palitos de 16cm cada, Nutella Original
-                                <button class="btn btn-primary btn-sm float-right">
-                                    Adicionar ao carrinho <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>
-                                Churros Espanhol, 4 palitos de 16cm cada, Nutella Original
-                                <button class="btn btn-primary btn-sm float-right">
-                                    Adicionar ao carrinho <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        ${tableResult}
                     </tbody>
                 </table>
         `)
@@ -58,5 +59,6 @@ class List
 }
 
 module.exports = {
-    List
+    List,
+    handleAddCart
 }
