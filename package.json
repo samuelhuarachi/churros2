@@ -13,7 +13,7 @@
     "axios": "^0.19.2",
     "axios-jsonp": "^1.0.4",
     "css-loader": "^3.5.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "micro-cors": "^0.1.1",
     "mongoose": "^5.9.18",
     "react": "^16.13.1",
